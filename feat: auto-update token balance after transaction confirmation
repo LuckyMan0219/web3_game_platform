@@ -1,0 +1,41 @@
+## Summary
+Implements automatic token balance refresh in Dashboard. After a transfer is confirmed on-chain, the updated balance is fetched and displayed without manual page refresh.
+
+## Changes
+- Added logic in components/Dashboard.tsx (ethers.js + tx.wait())
+- Added abis/Token.json (ERC20 ABI)
+- Added .env support for REACT_APP_TOKEN_ADDRESS
+
+## Acceptance Criteria
+- Balance updates only after tx confirmation
+- No page reload required
+- Works with testnet or mainnet
+
+## How to test
+1. git clone <repo> && cd web3_game_platform
+2. git checkout feat/update-balance
+3. npm install
+4. Create .env file with:
+   REACT_APP_TOKEN_ADDRESS=0xYourTokenAddress
+5. npm run dev → connect MetaMask → send token → watch balance auto-update
+
+1. Clone & checkout:
+   git clone https://github.com/LuckyMan0219/web3_game_platform.git
+   cd web3_game_platform
+   git fetch origin
+   git checkout feat/update-balance
+
+2. Install:
+   npm install
+
+3. Environment:
+   - Create .env in project root:
+     REACT_APP_TOKEN_ADDRESS=0xYourTokenAddress
+
+4. Run:
+   npm run dev
+
+5. Open in browser:
+   - Connect MetaMask
+   - Ensure account has tokens + ETH for gas
+   - Transfer tokens → after tx confirmation → balance auto-refreshes
